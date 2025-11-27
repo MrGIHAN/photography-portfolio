@@ -1,0 +1,64 @@
+.App {
+  text-align: left;
+}
+
+/* GSAP animation preparation classes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.rotate-in {
+  opacity: 0;
+  transform: rotate(-5deg) scale(0.95);
+}
+
+/* Loading states */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Custom cursor for photography site */
+@media (min-width: 1024px) {
+  .gallery-item:hover {
+    cursor: zoom-in;
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar, .btn-primary, .hero-btn {
+    display: none !important;
+  }
+}
