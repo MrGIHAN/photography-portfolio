@@ -1,8 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   html {
@@ -11,37 +9,9 @@
   }
   
   body {
-    @apply bg-slate-50 text-gray-900 antialiased;
-  }
-}
-
-@layer components {
-  .btn-primary {
-    @apply bg-gradient-to-r from-amber-500 to-amber-600 text-white px-8 py-4 rounded-full font-semibold hover:from-amber-600 hover:to-amber-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md border-0;
-  }
-  
-  .btn-secondary {
-    @apply bg-transparent border-2 border-amber-500 text-amber-500 px-8 py-3 rounded-full font-semibold hover:bg-amber-500 hover:text-white transition-all duration-300;
-  }
-  
-  .section-padding {
-    @apply py-20 px-4 sm:px-6 lg:px-8;
-  }
-  
-  .container-custom {
-    @apply max-w-7xl mx-auto;
-  }
-  
-  .text-gradient {
-    @apply bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent;
-  }
-  
-  .card-hover {
-    @apply transform transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl;
-  }
-  
-  .glass-effect {
-    @apply bg-white/10 backdrop-blur-md border border-white/20;
+    @apply bg-white text-gray-900 antialiased;
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -57,35 +27,19 @@
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, #f59e0b, #d97706);
   border-radius: 5px;
-  border: 2px solid #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #d97706, #b45309);
 }
 
-/* Loading animation */
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg); 
-  }
-  50% { 
-    transform: translateY(-15px) rotate(2deg); 
-  }
-}
-
-.floating {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Gradient text animation */
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
+/* Loading fallback */
+.loading-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f172a;
+  color: white;
+  font-size: 1.5rem;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,11 +6,11 @@ import Services from './components/Services';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { useScrollAnimation } from './hooks/useScrollAnimation';
-import './styles/App.css';
 
 function App() {
-  useScrollAnimation();
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+  }, []);
 
   return (
     <div className="App">
