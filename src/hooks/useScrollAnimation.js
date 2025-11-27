@@ -6,20 +6,19 @@ export const useScrollAnimation = () => {
 
   useEffect(() => {
     if (!initialized.current) {
-      // Small delay to ensure DOM is fully loaded
-      setTimeout(() => {
+      // Wait for components to mount
+      const timer = setTimeout(() => {
         initAnimations();
-      }, 100);
-      initialized.current = true;
+        initialized.current = true;
+      }, 500);
+      
+      return () => clearTimeout(timer);
     }
 
     const handleScroll = () => {
       const isScrolled = window.scrollY > 100;
       animateNavbar(isScrolled);
     };
-
-    // Initial check
-    handleScroll();
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     

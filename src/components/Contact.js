@@ -17,86 +17,95 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
     alert('Thank you for your message! We will get back to you soon.');
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
+  const contactInfo = [
+    {
+      icon: '📧',
+      title: 'Email Us',
+      details: ['hello@framecraft.com', 'We respond within 24 hours'],
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      icon: '📞',
+      title: 'Call Us',
+      details: ['+1 (555) 123-4567', 'Mon-Fri from 9am to 6pm'],
+      color: 'from-green-500 to-emerald-500'
+    },
+    {
+      icon: '📍',
+      title: 'Studio Location',
+      details: ['123 Creative Studio', 'New York, NY 10001'],
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      icon: '🕒',
+      title: 'Working Hours',
+      details: ['Monday - Friday: 9AM - 6PM', 'Weekends: By appointment'],
+      color: 'from-orange-500 to-red-500'
+    }
+  ];
+
   return (
-    <section id="contact" className="section-padding bg-white">
-      <div className="container-custom">
+    <section id="contact" className="section-padding bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-accent rounded-full -translate-x-32 -translate-y-32"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full translate-x-48 translate-y-48"></div>
+      </div>
+
+      <div className="container-custom relative z-10">
         <div className="text-center mb-16">
-          <h2 className="fade-in-up text-4xl md:text-5xl font-bold mb-4">
-            Get In <span className="text-gradient">Touch</span>
+          <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-accent/20">
+            <span className="text-lg">💬</span>
+            <span>Get In Touch</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Let's Create <span className="text-gradient">Together</span>
           </h2>
-          <p className="fade-in-up text-xl text-gray-600 max-w-2xl mx-auto">
-            Ready to capture your special moments? Let's discuss your photography needs and create something amazing together.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Ready to capture your special moments? Let's discuss your photography needs and create something amazing.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-3 gap-12 items-start">
           {/* Contact Information */}
-          <div className="fade-in-up">
-            <h3 className="text-3xl font-bold text-primary mb-8">Let's Start Your Project</h3>
-            
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-amber-100 p-3 rounded-full">
-                  <span className="text-amber-600 text-xl">📧</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-primary">Email Us</h4>
-                  <p className="text-gray-600">hello@visionframe.com</p>
-                  <p className="text-gray-500 text-sm">We'll respond within 24 hours</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-amber-100 p-3 rounded-full">
-                  <span className="text-amber-600 text-xl">📞</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-primary">Call Us</h4>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
-                  <p className="text-gray-500 text-sm">Mon-Fri from 9am to 6pm</p>
+          <div className="lg:col-span-1 space-y-6">
+            {contactInfo.map((item, index) => (
+              <div 
+                key={index}
+                className="group p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`flex-shrink-0 w-14 h-14 bg-gradient-to-r ${item.color} rounded-2xl flex items-center justify-center text-xl text-white transform group-hover:scale-110 transition-transform duration-300`}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg text-primary mb-2">{item.title}</h4>
+                    {item.details.map((detail, idx) => (
+                      <p key={idx} className="text-gray-600 text-sm leading-relaxed">
+                        {detail}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-amber-100 p-3 rounded-full">
-                  <span className="text-amber-600 text-xl">📍</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-primary">Studio Location</h4>
-                  <p className="text-gray-600">123 Photography Studio</p>
-                  <p className="text-gray-600">Creative District, New York, NY 10001</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-amber-100 p-3 rounded-full">
-                  <span className="text-amber-600 text-xl">🕒</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg text-primary">Working Hours</h4>
-                  <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                  <p className="text-gray-600">Weekends: By appointment only</p>
-                </div>
-              </div>
-            </div>
+            ))}
 
             {/* Social Links */}
-            <div className="mt-8">
-              <h4 className="font-semibold text-lg text-primary mb-4">Follow Our Work</h4>
+            <div className="bg-gradient-to-r from-primary to-accent rounded-2xl p-6 text-white">
+              <h4 className="font-semibold text-lg mb-4">Follow Our Journey</h4>
               <div className="flex space-x-4">
                 {['Instagram', 'Facebook', 'Twitter', 'Pinterest'].map((platform) => (
                   <a
                     key={platform}
                     href="#"
-                    className="bg-gray-100 hover:bg-amber-500 hover:text-white text-gray-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
+                    className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center hover:bg-white/30 transition-all duration-300 transform hover:scale-110"
                   >
-                    {platform}
+                    {platform.slice(0, 1)}
                   </a>
                 ))}
               </div>
@@ -104,8 +113,8 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="contact-form fade-in-up">
-            <form onSubmit={handleSubmit} className="bg-gray-50 rounded-2xl p-8 shadow-lg">
+          <div className="lg:col-span-2 contact-form">
+            <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -118,7 +127,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
                     placeholder="Your full name"
                   />
                 </div>
@@ -133,7 +142,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -150,7 +159,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white"
                   placeholder="What is this regarding?"
                 />
               </div>
@@ -166,14 +175,14 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="6"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 resize-vertical"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white resize-vertical"
                   placeholder="Tell us about your project, event, or any specific requirements..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full btn-primary py-4 text-lg font-semibold"
+                className="w-full btn-primary py-4 text-lg font-semibold rounded-xl transform hover:scale-105 transition-all duration-300"
               >
                 Send Message
               </button>
